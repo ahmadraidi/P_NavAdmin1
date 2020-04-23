@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
 import android.util.Log.d
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.p_navadmin.R
 import com.google.firebase.firestore.ktx.firestore
@@ -66,6 +67,7 @@ class AdminConfirmation : AppCompatActivity() {
                     .set(event)
                     .addOnSuccessListener { result ->
                         d("firebase", "updated")
+                        Toast.makeText(applicationContext, "Event Approved", Toast.LENGTH_SHORT).show()
                     }
                     .addOnFailureListener { e ->
                         d("firebase", "error ", e)
@@ -96,6 +98,7 @@ class AdminConfirmation : AppCompatActivity() {
                 .delete()
                 .addOnSuccessListener { result ->
                     d("firebase", "deleted")
+                    Toast.makeText(applicationContext, "Successfully Reject", Toast.LENGTH_SHORT).show()
 
 //                    startActivity(Intent(this, Admin_Home::class.java))
                     val intent = Intent(this, Admin_Home::class.java)

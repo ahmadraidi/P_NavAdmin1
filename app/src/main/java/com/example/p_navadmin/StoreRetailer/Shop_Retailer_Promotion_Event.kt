@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log.d
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import com.example.p_navadmin.R
@@ -25,8 +26,6 @@ class Shop_Retailer_Promotion_Event : AppCompatActivity() {
     // Create a storage reference from our app
     var storageRef = storage.reference
     // Create a child reference
-    // imagesRef now points to "images"
-    var imagesRef: StorageReference? = storageRef.child("images")
 
     internal var filePath: Uri? = null
     var imgName = ""
@@ -55,7 +54,7 @@ class Shop_Retailer_Promotion_Event : AppCompatActivity() {
 
         //upload Image / browse button
         buttonBrowse.setOnClickListener {
-            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
             startActivityForResult(Intent.createChooser(intent, "select image"), PERMISSION_PICK_IMAGE)
             d("firebase", "browse")
@@ -94,6 +93,8 @@ class Shop_Retailer_Promotion_Event : AppCompatActivity() {
                 && imgName.isNotEmpty())
             {
                 //upload img
+                val imagesRef = storageRef.child(filePath!!.lastPathSegment.toString())
+
                 val uploadTask = imagesRef!!.putFile(filePath!!)
                 // upload and get URL
                 var url = ""
@@ -125,6 +126,7 @@ class Shop_Retailer_Promotion_Event : AppCompatActivity() {
                                 .addOnSuccessListener { result ->
                                     d("firebase", "Successfully add new data")
 //                                    startActivity(Intent(this, Shop_Retailer_Promotion_Event::class.java))
+                                        Toast.makeText(applicationContext, "Successfully Submit", Toast.LENGTH_SHORT).show()
 
                                     val intent = Intent(this, Shop_Retailer_Promotion_Event::class.java)
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or
@@ -153,16 +155,14 @@ class Shop_Retailer_Promotion_Event : AppCompatActivity() {
 
             filePath = data!!.data
 
-            val fileName = data.data?.lastPathSegment
-            val path = fileName?.toUri()?.pathSegments
-            val pa = path?.get(path.size -1)
-            imgName = pa.toString()
+            val fileName = filePath?.lastPathSegment
+            imgName = fileName.toString()
 
 //            d("faris", "path : $fileName")
 //            d("faris", "path : $path")
 //            d("faris", "path : $pa")
             d("firebase", "path : $imgName")
-            descriptionImage.text = pa
+            descriptionImage.text = "Image Selected"
 
         }
     }

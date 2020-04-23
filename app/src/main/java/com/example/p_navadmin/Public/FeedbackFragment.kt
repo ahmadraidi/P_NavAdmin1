@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RatingBar
+import android.widget.Toast
 import com.example.p_navadmin.R
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.getField
@@ -81,6 +82,7 @@ class FeedbackFragment : Fragment() {
                     .add(rateInfo)
                     .addOnSuccessListener { result ->
                         d("raidi", "rate uploaded rate : $rateGiven")
+                        Toast.makeText(context, "Rating Submitted", Toast.LENGTH_SHORT).show()
 
                         // if user not exist yet
                         if (user.isEmpty()) {
@@ -102,6 +104,7 @@ class FeedbackFragment : Fragment() {
                     .set(rateInfo)
                     .addOnSuccessListener { result ->
                         d("raidi", "rate uploaded rate : $rateGiven")
+                        Toast.makeText(context, "Rating Submitted", Toast.LENGTH_SHORT).show()
 
                     }
                     .addOnFailureListener { e ->
