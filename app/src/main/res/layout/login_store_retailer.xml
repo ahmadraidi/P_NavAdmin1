@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/storeretailer"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/inputUsernameSR"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="60dp"
+        android:drawableStart="@drawable/ic_person_black_24dp"
+        android:ems="10"
+        android:hint="Username"
+        android:textColorHint="@color/whiteColor"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+    <EditText
+        android:id="@+id/inputPasswordSR"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:drawableStart="@drawable/ic_vpn_key_black_24dp"
+        android:layout_marginEnd="60dp"
+        android:ems="10"
+        android:hint="Password"
+        android:textColorHint="@color/whiteColor"
+        android:inputType="textPassword"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputUsernameSR" />
+
+    <Button
+        android:id="@+id/buttonLoginSR"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+        android:text="@string/sign_in"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputPasswordSR" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="153dp"
+        android:layout_height="169dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_ampangpoint" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <!--    now add icon-->
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/store_details"
+            android:title="Store Details"
+            android:icon="@drawable/ic_action_name"
+            />
+
+        <item
+            android:id="@+id/verify_list"
+            android:title="Verify List"
+            android:icon="@drawable/ic_action_name"
+            />
+        <item
+            android:id="@+id/user_feedback"
+            android:title="User Feedback"
+            android:icon="@drawable/ic_action_name"
+            />
+
+    </group>
+
+
+</menu>
