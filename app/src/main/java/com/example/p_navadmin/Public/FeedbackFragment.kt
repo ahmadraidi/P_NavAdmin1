@@ -73,7 +73,7 @@ class FeedbackFragment : Fragment() {
             // get the rating given
             val rateGiven = ratingBar.rating
             val rateInfo = hashMapOf(
-                "raidi" to rateGiven
+                "rate" to rateGiven
             )
 
             if (user.isEmpty()) {
