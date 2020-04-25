@@ -43,9 +43,9 @@ class Login_ShopRetailer : AppCompatActivity() {
                                     Toast.makeText(applicationContext, "Wrong Password or Username", Toast.LENGTH_SHORT).show()
                                 }
                             } else {
-                                Toast.makeText(applicationContext, "Wrong Password or Username", Toast.LENGTH_SHORT).show()
+//                                Toast.makeText(applicationContext, "Wrong Password or Username", Toast.LENGTH_SHORT).show()
                             }
-                            
+
                         }
 
                     }
