@@ -26,7 +26,8 @@ class Login_ShopRetailer : AppCompatActivity() {
                 db.collection("Login Store Retailer")
                     .get()
                     .addOnSuccessListener { result ->
-                        for (document in result) {
+                        var chk = 0
+                        loop@for (document in result) {
                             val usernameSR = document.getField<String>("username")
                             val passwordSR = document.getField<String>("password")
                             val iUsernameSR = inputUsernameSR.text.toString()
@@ -35,17 +36,22 @@ class Login_ShopRetailer : AppCompatActivity() {
                             if (usernameSR.equals(iUsernameSR)) {
                                 d("firebase", "SR username ${document.getField<String>("username")}")
                                 if (passwordSR.equals(iPasswordSR)) {
+                                    chk = 1
                                     d("firebase", "SR password ${document.getField<String>("password")}")
                                     val intent = Intent(this, Shop_Retailer_Promotion_Event::class.java)
                                     intent.putExtra("store", usernameSR)
                                     startActivity(intent)
+                                    break@loop
                                 } else {
                                     Toast.makeText(applicationContext, "Wrong Password or Username", Toast.LENGTH_SHORT).show()
                                 }
                             } else {
-//                                Toast.makeText(applicationContext, "Wrong Password or Username", Toast.LENGTH_SHORT).show()
+//                                Toast.makeText(applicationContext, "Wrong Username or Password", Toast.LENGTH_SHORT).show()
                             }
 
+                        }
+                        if (chk == 0) {
+                            Toast.makeText(applicationContext, "Wrong Username or Password", Toast.LENGTH_SHORT).show()
                         }
 
                     }
